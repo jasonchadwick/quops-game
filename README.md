@@ -1,3 +1,7 @@
+# Quops: A board game inspired by quantum mechanics
+
+TODO: make this more readable
+
 All tiles are entangled - i.e. the entire board is in a superposition of possible
 states. These states have different "probability amplitudes" associated with them.
 As in quantum mechanics, probability amplitudes are complex numbers. The "expected
@@ -33,13 +37,13 @@ total possible "board-states" (ex: 2 qudits of 3 states each can represent the f
 8 states: 00, 01, 02, 10, 11, 12, 20, 21, 22)
 
 board indexing (size=3):
-
+```
     13  15  18
   11   4   6  17
  9   2   0   5  16
    8   1   3  14
      7  10  12
-
+```
 Organization:
 In quantum mechanics terms, the game is in a superposition of 2^ntiles-1 possible states, each of
 which has a "probability amplitude" that is related to the probability of that particular
