@@ -1,6 +1,7 @@
-from Board import *
-from Player import *
-from Card import *
+from Board import Board
+from Player import Player
+from Card import Card
+from gates import *
 
 class QGame():
     def __init__(self, size=3, handsize=5, ops_per_turn=3, win_threshold=None):
