@@ -1,6 +1,9 @@
 # Quops: A board game inspired by quantum mechanics
 
-TODO: make this more readable
+TODO:
+- make this documentation more readable
+- work on game balancing (game currently works, but isn't very fun)
+- make an android app!
 
 All tiles are entangled - i.e. the entire board is in a superposition of possible
 states. These states have different "probability amplitudes" associated with them.
