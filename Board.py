@@ -2,6 +2,8 @@ import numpy as np
 from gates import *
 from game_utils.hex_board import HexBoard
 
+np.set_printoptions(precision=3)
+
 class Board(HexBoard):
     def __init__(self, size):
         super().__init__(size, False)
@@ -93,17 +95,16 @@ class Board(HexBoard):
             self.addstate(idx,amp)
         self.prunestates()
 
-    def twobitgate(self, tgtA, tgtB, gate):
+    def twobitgate(self, tgtA, tgtB, gate, invert=False):
         # return False if invalid gate, else True
-        # TODO: use Gate class instead of matrices
+        if invert:
+            gatenew = np.zeros((4,4),dtype=np.complex64)
+            for i in range(4):
+                for j in range(4):
+                    gatenew[i,j] = gate[(i+2) % 4, (j+2) % 4]
+            gate = gatenew
         if tgtB not in self.get_adjacent_idxs(tgtA):
             return False
-        if tgtA > tgtB:
-            tgt1 = tgtB
-            tgt2 = tgtA
-        else:
-            tgt1 = tgtA
-            tgt2 = tgtB
         states_to_rm = []
         states_to_add = []
         for idx in self.states:
@@ -112,8 +113,11 @@ class Board(HexBoard):
             bitA = bits[tgtA]
             bitB = bits[tgtB]
             for newA,newB in [[0,0],[0,1],[1,0],[1,1]]:
-                newbits = np.concatenate((bits[:tgt1], [newA], bits[tgt1+1:tgt2], [newB], bits[tgt2+1:]))
                 newamp = gate[2*newA+newB, 2*bitA+bitB] * amp
+                if tgtA <= tgtB:
+                    newbits = np.concatenate((bits[:tgtA], [newA], bits[tgtA+1:tgtB], [newB], bits[tgtB+1:]))
+                else:
+                    newbits = np.concatenate((bits[:tgtB], [newB], bits[tgtB+1:tgtA], [newA], bits[tgtA+1:]))
                 states_to_add.append((self.state_idx_from_bits(newbits), newamp))
             states_to_rm.append(idx)
         for idx in states_to_rm:
