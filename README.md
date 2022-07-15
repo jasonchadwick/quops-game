@@ -97,6 +97,8 @@ total possible "board-states" (ex: 2 qudits of 3 states each can represent the f
 8 states: 00, 01, 02, 10, 11, 12, 20, 21, 22)
 
 ### TODO
+- allow for gates to be placed in any layer - i.e. *before* other existing gates
+    - this will allow for actual interesting behavior
 - win condition = make [0,0,0,...,0] the most probable state
 - in-game tutorial/info on each of the cards
 - work on game balancing (game currently works, but isn't very fun)
