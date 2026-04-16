@@ -36,6 +36,11 @@ h = 1/np.sqrt(2)
 H = np.array([[h,  h],
               [h, -h]])
 
+CH = np.array([[1,0,0,0],
+               [0,1,0,0],
+               [0,0,h,h],
+               [0,0,h,-h]])
+
 def RX(theta):
     return linalg.expm(-theta/2*1j*X)
 

@@ -1,6 +1,6 @@
 import numpy as np
 from gates import *
-from game_utils.hex_board import HexBoard
+from hex_board import HexBoard
 
 np.set_printoptions(precision=3)
 
